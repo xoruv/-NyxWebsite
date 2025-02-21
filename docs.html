@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYX | Classified Documents</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-grid"></div>
+    <div class="noise-overlay"></div>
+    <!-- Loading Screen -->
+    <div class="loading-screen docs-loading">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <img src="dark-angel-logo.png" alt="" class="nyx-logo">
+            </div>
+            <div class="loading-status">
+                <div class="status-text">
+                    <span class="chrome-hearts-text" data-text="ACCESSING CLASSIFIED FILES">ACCESSING CLASSIFIED FILES</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container docs-container">
+        <header class="slide-in-top">
+            <div class="logo">
+                <img src="dark-angel-logo.png" alt="Dark Angel" class="dark-angel">
+            </div>
+            <h1>CLASSIFIED FILES</h1>
+            <p class="tagline">Access Level: Restricted</p>
+        </header>
+
+        <!-- Search and Filter Controls -->
+        <div class="docs-controls">
+            <div class="search-bar">
+                <input type="text" placeholder="Search documents..." class="search-input">
+                <div class="search-icon"></div>
+            </div>
+            <div class="filter-controls">
+                <select class="filter-select">
+                    <option value="latest">Latest First</option>
+                    <option value="views">Most Viewed</option>
+                    <option value="classified">Classification</option>
+                </select>
+                <button class="chrome-button upload">
+                    <span class="button-text">UPLOAD</span>
+                    <div class="button-shine"></div>
+                </button>
+            </div>
+        </div>
+
+        <section class="documents-section">
+            <div class="documents-header">
+                <div class="col-status"></div>
+                <div class="col-title">DOCUMENT NAME</div>
+                <div class="col-views">VIEWS</div>
+                <div class="col-author">CREATED BY</div>
+                <div class="col-date">ADDED ON</div>
+                <div class="col-class">CLASS</div>
+            </div>
+            <div class="documents-list">
+                <div class="document-item">
+                    <div class="doc-status restricted"></div>
+                    <div class="doc-info">
+                        <h3>Operation Shadow Protocol</h3>
+                        <div class="doc-meta">
+                            <span class="views">Views: 127</span>
+                            <span class="author">By: REDACTED</span>
+                            <span class="date">Added: 2024-02-15</span>
+                        </div>
+                    </div>
+                    <div class="doc-classification">TOP SECRET</div>
+                </div>
+
+                <div class="document-item">
+                    <div class="doc-status classified"></div>
+                    <div class="doc-info">
+                        <h3>Project Nightfall Analysis</h3>
+                        <div class="doc-meta">
+                            <span class="views">Views: 89</span>
+                            <span class="author">By: SYSTEM</span>
+                            <span class="date">Added: 2024-02-10</span>
+                        </div>
+                    </div>
+                    <div class="doc-classification">CLASSIFIED</div>
+                </div>
+
+                <div class="document-item">
+                    <div class="doc-status encrypted"></div>
+                    <div class="doc-info">
+                        <h3>Neural Network Breach Report</h3>
+                        <div class="doc-meta">
+                            <span class="views">Views: 234</span>
+                            <span class="author">By: ENCRYPTED</span>
+                            <span class="date">Added: 2024-02-05</span>
+                        </div>
+                    </div>
+                    <div class="doc-classification">ENCRYPTED</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <a href="/" class="chrome-button return">
+                <span class="button-text">RETURN</span>
+            </a>
+        </footer>
+    </div>
+    <script src="/js/scripts.js"></script>
+</body>
+</html> 
