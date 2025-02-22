@@ -54,7 +54,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const decryptText = document.querySelector('.decrypt-text');
     const chromeHeartsText = document.querySelector('.chrome-hearts-text');
     
-    // Ensure container is hidden initially
+    // Create audio element early
+    const audio = new Audio('jdhn5y.mp3');
+    audio.volume = 0.5;
+    audio.preload = 'auto';
+    
+    // Function to handle audio playback
+    function playAudio() {
+        const playPromise = audio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                console.log('Autoplay prevented, waiting for user interaction:', error);
+                // Add a click handler to the document if autoplay fails
+                document.addEventListener('click', () => {
+                    audio.play().catch(e => console.log('Play failed:', e));
+                }, { once: true });
+            });
+        }
+    }
+
+    // Set a fallback timer for audio playback
+    setTimeout(playAudio, 6000);
+    
+    // Rest of your loading code...
     container.style.opacity = '0';
     container.style.transform = 'translateY(20px)';
     
@@ -63,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         progress += 1;
         percentage.textContent = `${progress}%`;
         
-        // Update decrypt text with typing effect
         if (progress === 30) {
             typeText('VERIFYING SECURITY PROTOCOLS...');
         } else if (progress === 60) {
@@ -73,6 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (progress === 100) {
             typeText('DECRYPTION COMPLETE');
             chromeHeartsText.style.animation = 'textGlitch 0.5s ease';
+            // Try to play audio when loading completes
+            playAudio();
         }
         
         if (progress >= 100) {
@@ -99,30 +123,14 @@ document.addEventListener('DOMContentLoaded', () => {
             loadingScreen.classList.add('complete');
             
             setTimeout(() => {
-                // Fade out loading screen
                 loadingScreen.style.opacity = '0';
-                
-                // Show and animate in the main container
                 container.style.display = 'block';
                 container.style.opacity = '1';
                 container.style.transform = 'translateY(0)';
                 
-                // Create and play audio after container is visible
-                const audio = new Audio('jdhn5y.mp3');
-                audio.volume = 0.5; // Set volume to 50%
+                // Try to play audio again when container is visible
+                playAudio();
                 
-                // Try playing multiple times if needed
-                const playAttempt = setInterval(() => {
-                    audio.play()
-                        .then(() => {
-                            clearInterval(playAttempt);
-                        })
-                        .catch(error => {
-                            console.log('Audio playback failed, retrying:', error);
-                        });
-                }, 1000);
-                
-                // Remove loading screen after fade
                 setTimeout(() => {
                     loadingScreen.style.display = 'none';
                 }, 800);
@@ -134,13 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (document.querySelector('.docs-loading')) {
         setTimeout(() => {
-            // Create and play audio
-            const audio = new Audio('jdhn5y.mp3');
-            audio.volume = 0.5; // Set volume to 50%
-            audio.play().catch(error => {
-                console.log('Audio playback failed:', error);
-            });
-
+            playAudio();
             document.querySelector('.docs-loading').style.opacity = '0';
             document.querySelector('.docs-container').classList.add('loaded');
             setTimeout(() => {
