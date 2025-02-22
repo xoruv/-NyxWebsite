@@ -98,13 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             loadingScreen.classList.add('complete');
             
-            // Create and play audio
-            const audio = new Audio('jdhn5y.mp3');
-            audio.volume = 0.5; // Set volume to 50%
-            audio.play().catch(error => {
-                console.log('Audio playback failed:', error);
-            });
-            
             setTimeout(() => {
                 // Fade out loading screen
                 loadingScreen.style.opacity = '0';
@@ -113,6 +106,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.style.display = 'block';
                 container.style.opacity = '1';
                 container.style.transform = 'translateY(0)';
+                
+                // Create and play audio after container is visible
+                const audio = new Audio('jdhn5y.mp3');
+                audio.volume = 0.5; // Set volume to 50%
+                
+                // Try playing multiple times if needed
+                const playAttempt = setInterval(() => {
+                    audio.play()
+                        .then(() => {
+                            clearInterval(playAttempt);
+                        })
+                        .catch(error => {
+                            console.log('Audio playback failed, retrying:', error);
+                        });
+                }, 1000);
                 
                 // Remove loading screen after fade
                 setTimeout(() => {
