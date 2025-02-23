@@ -293,6 +293,14 @@ h1::after {
     flex-wrap: wrap;
     padding: 0 1rem;
     margin-top: 5rem;
+    width: 100%;
+}
+
+.social-links .chrome-button {
+    flex: 1;
+    min-width: 180px;
+    max-width: 250px;
+    text-align: center;
 }
 
 .glow-effect {
@@ -843,23 +851,26 @@ h1::after {
     left: 100%;
 }
 
-.chrome-button.restricted {
-    background: var(--glass-gradient);
-    backdrop-filter: blur(10px);
+.chrome-button.restricted,
+.chrome-button.classified {
+    border-color: rgba(255, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
-.chrome-button.restricted::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 8px;
-    padding: 1px;
-    background: var(--chrome-silver);
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+.chrome-button.restricted:hover,
+.chrome-button.classified:hover {
+    background: rgba(255, 0, 0, 0.1);
+    border-color: rgba(255, 0, 0, 0.5);
+    box-shadow: 
+        0 0 20px rgba(255, 0, 0, 0.2),
+        0 0 40px rgba(255, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.chrome-button.restricted:hover .button-text,
+.chrome-button.classified:hover .button-text {
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
 }
 
 .chrome-button:hover {
