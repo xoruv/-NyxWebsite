@@ -24,43 +24,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="dark-angel-logo.png">
+
+    <style>
+    /* Override container styles to show immediately */
+    .container {
+        opacity: 1 !important;
+        display: flex !important;
+        transform: translateY(0) !important;
+    }
+
+    /* New layout styles */
+    .roster {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .manager-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .moderators-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .member.leader {
+        max-width: 300px;
+    }
+
+    .member {
+        max-width: 280px;
+    }
+    </style>
 </head>
 <body>
     <div class="background-grid"></div>
     <div class="noise-overlay"></div>
-    
-    <!-- Loading Screen -->
-    <div class="loading-screen">
-        <div class="matrix-rain"></div>
-        
-        <!-- Background Logo -->
-        <div class="background-logo">
-            <img src="dark-angel-logo.png" alt="" class="nyx-logo-bg">
-        </div>
-
-        <!-- System Logs -->
-        <div class="system-logs left-logs">
-            <div class="log-container">
-                <div class="log-entry">[SYSTEM] > Accessing Discord database...</div>
-                <div class="log-entry">[NETWORK] > Establishing connection...</div>
-                <div class="log-entry">[SECURITY] > Verifying staff credentials...</div>
-            </div>
-        </div>
-
-        <!-- Main Loading Content -->
-        <div class="loading-content">
-            <div class="loading-logo">
-                <img src="dark-angel-logo.png" alt="" class="nyx-logo">
-            </div>
-
-            <div class="loading-status">
-                <div class="status-text">
-                    <span class="chrome-hearts-text" data-text="ACCESSING DISCORD DATABASE">ACCESSING DISCORD DATABASE</span>
-                    <span class="decrypt-text"></span>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="container">
         <header class="slide-in-top">
@@ -72,27 +77,29 @@
         </header>
 
         <section class="roster">
-            <div class="members">
-                <!-- Staff Manager -->
+            <!-- Manager Section -->
+            <div class="manager-section">
                 <div class="member leader">
                     <div class="profile-image">
                         <img src="shiro.webp" alt="Shiro">
                         <div class="status online"></div>
                     </div>
-                    <h3>shiro</h3>
+                    <h3><a href="https://discord.com/users/1009127754727424060" target="_blank" class="member-link">shiro</a></h3>
                     <p class="role">Staff Manager</p>
                     <div class="quote">
                         <p>"Leading through example, guiding through wisdom."</p>
                     </div>
                 </div>
+            </div>
 
-                <!-- Moderators -->
+            <!-- Moderators Section -->
+            <div class="moderators-section">
                 <div class="member">
                     <div class="profile-image">
                         <img src="exkor.webp" alt="exkor">
                         <div class="status online"></div>
                     </div>
-                    <h3>exkor</h3>
+                    <h3><a href="https://discord.com/users/988864752711237673" target="_blank" class="member-link">exkor</a></h3>
                     <p class="role">Discord Moderator</p>
                     <div class="quote">
                         <p>"Maintaining order in the digital realm."</p>
@@ -104,7 +111,7 @@
                         <img src="ryan.webp" alt="Ryan">
                         <div class="status online"></div>
                     </div>
-                    <h3>Ryan</h3>
+                    <h3><a href="https://discord.com/users/297505155497197569" target="_blank" class="member-link">Ryan</a></h3>
                     <p class="role">Discord Moderator</p>
                     <div class="quote">
                         <p>"Vigilance never sleeps."</p>
@@ -116,7 +123,7 @@
                         <img src="sleepy.webp" alt="Sleepy">
                         <div class="status online"></div>
                     </div>
-                    <h3>Sleepy</h3>
+                    <h3><a href="https://discord.com/users/906762410197663765" target="_blank" class="member-link">Sleepy</a></h3>
                     <p class="role">Discord Moderator</p>
                     <div class="quote">
                         <p>"In silence, we protect."</p>
