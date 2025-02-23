@@ -54,34 +54,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const decryptText = document.querySelector('.decrypt-text');
     const chromeHeartsText = document.querySelector('.chrome-hearts-text');
     
-    // Create audio element early
+    // Create audio element early and configure it
     const audio = new Audio('jdhn5y.mp3');
     audio.volume = 0.5;
     audio.preload = 'auto';
+    audio.muted = true; // Start muted to help with autoplay
     
     // Function to handle audio playback
-    function playAudio() {
-        const playPromise = audio.play();
-        
-        if (playPromise !== undefined) {
-            playPromise.catch(error => {
-                console.log('Autoplay prevented, waiting for user interaction:', error);
-                // Add a click handler to the document if autoplay fails
-                document.addEventListener('click', () => {
-                    audio.play().catch(e => console.log('Play failed:', e));
-                }, { once: true });
-            });
+    async function playAudio() {
+        try {
+            audio.muted = false; // Unmute before playing
+            await audio.play();
+            console.log('Audio playing successfully');
+        } catch (error) {
+            console.log('Autoplay failed:', error);
+            // Add click handler as fallback
+            document.addEventListener('click', () => {
+                audio.muted = false;
+                audio.play().catch(e => console.log('Play failed:', e));
+            }, { once: true });
         }
     }
 
-    // Set a fallback timer for audio playback
-    setTimeout(playAudio, 6000);
-    
+    // Try to play audio at multiple points
+    setTimeout(async () => {
+        await playAudio();
+    }, 100); // Try immediately after load
+
+    setTimeout(async () => {
+        await playAudio();
+    }, 3000); // Try after 3 seconds
+
+    setTimeout(async () => {
+        await playAudio();
+    }, 6000); // Try after 6 seconds
+
     // Rest of your loading code...
     container.style.opacity = '0';
     container.style.transform = 'translateY(20px)';
     
     let progress = 0;
+    // Adjust interval to complete in ~3 seconds (3000ms / 100 steps = 30ms per step)
     const progressInterval = setInterval(() => {
         progress += 1;
         percentage.textContent = `${progress}%`;
@@ -95,15 +108,13 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (progress === 100) {
             typeText('DECRYPTION COMPLETE');
             chromeHeartsText.style.animation = 'textGlitch 0.5s ease';
-            // Try to play audio when loading completes
-            playAudio();
+            setTimeout(completeLoading, 500); // Add delay before completion
         }
         
         if (progress >= 100) {
             clearInterval(progressInterval);
-            completeLoading();
         }
-    }, 30);
+    }, 30); // Reduced from 50ms to 30ms per step
     
     function typeText(text) {
         let i = 0;
@@ -119,23 +130,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function completeLoading() {
+        loadingScreen.classList.add('complete');
+        
         setTimeout(() => {
-            loadingScreen.classList.add('complete');
+            loadingScreen.style.opacity = '0';
+            container.style.display = 'flex';
+            container.style.opacity = '1';
+            container.style.transform = 'translateY(0)';
             
             setTimeout(() => {
-                loadingScreen.style.opacity = '0';
-                container.style.display = 'block';
-                container.style.opacity = '1';
-                container.style.transform = 'translateY(0)';
-                
-                // Try to play audio again when container is visible
-                playAudio();
-                
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 800);
+                loadingScreen.style.display = 'none';
             }, 800);
-        }, 500);
+        }, 800);
     }
 
     createMatrixRain();
