@@ -1619,6 +1619,42 @@ footer {
     .chrome-button {
         width: 100%;
     }
+
+    /* Add these styles for homepage */
+    .members {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .member {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .quote {
+        max-width: 100%;
+    }
+
+    /* Adjust loading screen for mobile */
+    .loading-screen .system-logs {
+        display: none;
+    }
+
+    .loading-content {
+        width: 90%;
+    }
+
+    .chrome-hearts-text {
+        font-size: 1rem;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -1627,6 +1663,43 @@ footer {
     }
 
     .member {
-        transform: scale(0.9);
+        transform: scale(0.95);
+    }
+
+    /* Add these styles for homepage */
+    .container {
+        padding: 1rem;
+    }
+
+    header {
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+    }
+
+    .tagline {
+        font-size: 0.8rem;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .quote p {
+        font-size: 0.85rem;
+    }
+
+    .role {
+        font-size: 0.8rem;
+    }
+
+    /* Adjust modal for mobile */
+    .modal-content {
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .modal-logo img {
+        width: 80px;
     }
 } 
