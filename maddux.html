@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maddux Benitone Document</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/dark-angel-logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/dark-angel-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/dark-angel-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/dark-angel-logo.png">
+    <link rel="mask-icon" href="/dark-angel-logo.png" color="#6e9fff">
+    <meta name="msapplication-TileImage" content="/dark-angel-logo.png">
+    <meta name="msapplication-TileColor" content="#6e9fff">
+    
     <!-- Primary Meta Tags -->
     <meta name="title" content="Maddux Benitone Document">
     <meta name="description" content="NYX Intelligence Report: Comprehensive documentation and evidence regarding Maddux Benitone.">
@@ -556,19 +565,50 @@
         .popup-content {
             background: rgba(25, 25, 30, 0.98);
             border: 1px solid #6e9fff;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 4px;
             max-width: 500px;
             text-align: center;
             position: relative;
+            box-shadow: 0 0 30px rgba(110, 159, 255, 0.15);
             animation: fadeIn 0.3s ease-out 0.1s backwards, borderGlow 4s infinite;
+        }
+
+        .popup-logo {
+            width: 120px;
+            height: auto;
+            margin: 0 auto 2rem;
+            filter: brightness(1) invert(1) sepia(100%) saturate(1000%) hue-rotate(180deg);
+            animation: glow 3s infinite;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .popup-logo:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2) invert(1) sepia(100%) saturate(1000%) hue-rotate(200deg);
         }
 
         .popup-message {
             color: #fff;
             font-size: 1.2rem;
             line-height: 1.6;
-            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(110, 159, 255, 0.3);
+            background: rgba(110, 159, 255, 0.05);
+            border-radius: 4px;
+            text-shadow: 0 0 10px rgba(110, 159, 255, 0.3);
+            animation: fadeIn 0.5s ease-out 0.2s backwards;
+        }
+
+        .popup-signature {
+            margin-top: 1.5rem;
+            color: #6e9fff;
+            font-style: italic;
+            font-size: 1.1rem;
+            text-align: right;
+            opacity: 0.9;
+            text-shadow: 0 0 8px rgba(110, 159, 255, 0.4);
+            animation: fadeIn 0.5s ease-out 0.4s backwards;
         }
 
         .footer-message {
@@ -584,6 +624,39 @@
         .footer-message:hover {
             color: #85aeff;
             text-shadow: 0 0 15px rgba(110, 159, 255, 0.8);
+        }
+
+        .return-home {
+            text-align: center;
+            margin: 2rem 0 4rem 0;
+        }
+
+        .home-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            color: #6e9fff;
+            text-decoration: none;
+            border: 1px solid #6e9fff;
+            background: rgba(25, 25, 30, 0.98);
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            animation: borderGlow 4s infinite;
+        }
+
+        .home-button:hover {
+            background: rgba(110, 159, 255, 0.1);
+            color: #85aeff;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(110, 159, 255, 0.3);
+        }
+
+        .home-button:active {
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -621,21 +694,21 @@
 
             <div class="content-section">
                 <h3 class="section-title">Behavioral Analysis</h3>
-                <p>His crimes? Oh, where to begin? Everyone at his school dislikes him—teachers, students, even those he considers "friends." In fact, they dislike him so much that they were the ones who reached out to us, asking for this very post to be made. The people he trusts? They don’t trust him back. They talk behind his back, laugh at his expense, and are more than happy to expose him for who he really is.</p>
+                <p>His crimes? Oh, where to begin? Everyone at his school dislikes him—teachers, students, even those he considers "friends." In fact, they dislike him so much that they were the ones who reached out to us, asking for this very post to be made. The people he trusts? They don't trust him back. They talk behind his back, laugh at his expense, and are more than happy to expose him for who he really is.</p>
             </div>
 
             <div class="content-section">
                 <h3 class="section-title">Current Status</h3>
-                <p>But here’s the real kicker: when confronted, Maddux doesn’t stand his ground—he hides behind Snapchat voice messages, cursing people out from the safety of his screen. Too bad we breached his account. Using your SSN as a password wasn’t a great idea, Maddux. :3 Wonder what else we should do? Oh wait—it’s all in this document!</p>
-                <p>And let’s not forget how you handle being offended—throwing threats like a tantrum-throwing child. You didn’t just curse people out; you threatened to kill the one who dared to insult you and even talked about shooting up your whole school just because your little entitled feelings got hurt.</p>
+                <p>But here's the real kicker: when confronted, Maddux doesn't stand his ground—he hides behind Snapchat voice messages, cursing people out from the safety of his screen. Too bad we breached his account. Using your SSN as a password wasn't a great idea, Maddux. :3 Wonder what else we should do? Oh wait—it's all in this document!</p>
+                <p>And let's not forget how you handle being offended—throwing threats like a tantrum-throwing child. You didn't just curse people out; you threatened to kill the one who dared to insult you and even talked about shooting up your whole school just because your little entitled feelings got hurt.</p>
                 <p>Oh, and speaking of breaking rules—drinking and smoking at just 15, as seen in the attached photos. Shall we tell your parents? Your whole school? Your "friends"?</p>
                 <p>TOO LATE!</p>
             </div>
 
             <div class="content-section">
                 <h3 class="section-title">Final Note</h3>
-                <p>You’re not nearly as important as you think you are.</p>
-                <p>And if your classmates, teachers, and the unfortunate souls who have to interact with you aren’t already aware of your antics, rest assured—they soon will be.</p>
+                <p>You're not nearly as important as you think you are.</p>
+                <p>And if your classmates, teachers, and the unfortunate souls who have to interact with you aren't already aware of your antics, rest assured—they soon will be.</p>
             </div>
 
             <div class="content-section personal-info">
@@ -728,6 +801,10 @@
         <div class="footer-message" id="footerMessage">
             More Coming Soon...
         </div>
+        
+        <div class="return-home">
+            <a href="/" class="home-button">Return Home</a>
+        </div>
     </div>
 
     <!-- Fullscreen image overlay -->
@@ -738,7 +815,11 @@
     <!-- Popup Message -->
     <div class="popup-overlay" id="popupOverlay">
         <div class="popup-content">
-            <div class="popup-message">Attention Maddux, We have decided to leave out everyone else's info for now. Such as family members, friends, cousins, etc. We will be adding more info soon depending on your actions.</div>
+            <img src="dark-angel-logo.png" alt="NYX Logo" class="popup-logo">
+            <div class="popup-message">
+                Attention Maddux, We have decided to leave out everyone else's info for now. Such as family members, friends, cousins, etc. We will be adding more info soon depending on your actions. And yes, we have the information with Layla, and the pictures, etc.
+                <div class="popup-signature">~Signed by NYX</div>
+            </div>
         </div>
     </div>
 
