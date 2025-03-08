@@ -658,10 +658,81 @@
         .home-button:active {
             transform: translateY(0);
         }
+
+        /* Updated styles for the password popup */
+        .password-popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .password-popup-content {
+            background: rgba(25, 25, 30, 0.98);
+            border: 1px solid #6e9fff;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(110, 159, 255, 0.3);
+            position: relative;
+        }
+
+        .password-popup-content img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 1rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .password-popup-content input {
+            width: 80%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #6e9fff;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        .password-popup-content button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: #6e9fff;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .password-popup-content button:hover {
+            background: #85aeff;
+        }
+
+        .blurred {
+            filter: blur(10px);
+        }
     </style>
 </head>
 <body>
-    <div class="maddux-container">
+    <div class="password-popup-overlay" id="passwordPopup">
+        <div class="password-popup-content">
+            <img src="dark-angel-logo.png" alt="Logo">
+            <p>This post has been paid to be closed. Please enter the password to view:</p>
+            <input type="password" id="passwordInput" placeholder="Enter Password">
+            <button id="passwordSubmit">Submit</button>
+            <p id="passwordMessage" style="color: #ff6e6e; margin-top: 1rem;"></p>
+        </div>
+    </div>
+
+    <div class="maddux-container" id="contentContainer">
         <div class="logo-container">
             <img src="dark-angel-logo.png" alt="Dark Angel Logo" class="logo">
         </div>
@@ -988,6 +1059,38 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
                 popupOverlay.classList.remove('active');
+            }
+        });
+
+        // Password protection logic
+        const passwordPopup = document.getElementById('passwordPopup');
+        const contentContainer = document.getElementById('contentContainer');
+        const passwordInput = document.getElementById('passwordInput');
+        const passwordSubmit = document.getElementById('passwordSubmit');
+        const passwordMessage = document.getElementById('passwordMessage');
+
+        // Show the password popup and blur the background
+        window.addEventListener('load', () => {
+            passwordPopup.style.display = 'flex';
+            contentContainer.classList.add('blurred');
+        });
+
+        // Check password
+        passwordSubmit.addEventListener('click', () => {
+            const password = passwordInput.value;
+            if (password === 'NyxSex') {
+                passwordPopup.style.display = 'none';
+                contentContainer.classList.remove('blurred');
+                alert('This post may be viewed by the admin.');
+            } else {
+                passwordMessage.textContent = 'Incorrect password.';
+            }
+        });
+
+        // Allow pressing Enter to submit the password
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                passwordSubmit.click();
             }
         });
     </script>
